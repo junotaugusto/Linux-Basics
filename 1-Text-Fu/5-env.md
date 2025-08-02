@@ -117,3 +117,34 @@ Assim, o sistema sempre reconhecerá os programas dentro da pasta `MeuPrograma`,
 
 Esse exemplo ajuda a entender que o `PATH` é uma maneira de dizer ao sistema onde procurar por executáveis, facilitando a execução dos seus programas e comandos personalizados.
 
+# Executando um script Python a partir de um arquivo executável no Linux
+
+É possível criar um script em Python que possa ser executado diretamente pelo terminal, como se fosse um programa. Para isso, criamos um arquivo com a extensão `.py` (por exemplo: `meuscript.py`) e adicionamos na primeira linha o shebang `#!/usr/bin/env python3`. Essa linha informa ao sistema que o conteúdo do arquivo deve ser interpretado pelo Python 3.
+
+Em seguida, basta escrever o código normalmente, como no exemplo abaixo:
+
+```python
+#!/usr/bin/env python3
+x = 10
+y = 20
+soma = x + y
+print(soma)
+```
+
+Depois de salvar o arquivo, precisamos garantir que ele tenha permissão de execução. Isso pode ser feito com o comando:
+
+```bash
+chmod +x meuscript.py
+```
+
+A partir daí, se estivermos no mesmo diretório do script, podemos executá-lo diretamente assim:
+
+```bash
+./meuscript.py
+```
+
+O terminal vai rodar o script com o interpretador Python e exibir a saída esperada (no exemplo acima, o número `30`).
+
+Esse processo permite que scripts Python funcionem como pequenos programas independentes, desde que tenham o shebang correto e permissão de execução.
+
+
