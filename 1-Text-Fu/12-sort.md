@@ -51,5 +51,3 @@ sort -n file1.txt
 ```
 
 No exemplo acima, como o arquivo contém palavras e não números, a ordenação numérica não faz sentido e o resultado será igual ao ordenado alfabeticamente.
-
-```
