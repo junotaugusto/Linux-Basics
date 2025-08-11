@@ -16,9 +16,7 @@ Por exemplo, a primeira linha desse arquivo provavelmente se parece com isto:
 root:x:0:0:root:/root:/bin/bash
 ```
 
-Cada linha exibe informações de um usuário.  
-Normalmente, você verá o usuário `root` como a primeira linha.  
-Existem vários campos separados por dois-pontos que fornecem informações adicionais sobre o usuário. Vamos analisá-los:
+Cada linha exibe informações de um usuário. Normalmente, você verá o usuário `root` como a primeira linha. Existem vários campos separados por dois-pontos que fornecem informações adicionais sobre o usuário. Vamos analisá-los:
 
 1. **Nome de usuário**  
 2. **Senha do usuário** – a senha não é realmente armazenada nesse arquivo, normalmente ela é armazenada no arquivo `/etc/shadow`.  
@@ -33,11 +31,16 @@ Existem vários campos separados por dois-pontos que fornecem informações adic
 6. **Diretório home do usuário**.  
 7. **Shell do usuário** – provavelmente verá muitos usuários usando `bash` como shell padrão.
 
-Normalmente, em uma página de configurações de usuários, você esperaria ver apenas usuários humanos.  
-No entanto, você notará que o `/etc/passwd` contém outros usuários.  
-Lembre-se: usuários existem no sistema principalmente para executar processos com diferentes permissões.  
-Às vezes, queremos executar processos com permissões pré-determinadas.  
-Por exemplo, o usuário `daemon` é usado para processos do tipo daemon.
+Normalmente, em uma página de configurações de usuários, você esperaria ver apenas usuários humanos. No entanto, você notará que o `/etc/passwd` contém **outros usuários**. O Linux trata qualquer entidade que possa executar processos e ter permissões como um “usuário”.
+
+Lembre-se: **usuários existem no sistema principalmente para executar processos com diferentes permissões**. Às vezes, queremos executar processos com permissões pré-determinadas. Por exemplo, o usuário `daemon` é usado para processos do tipo daemon.
+
+Por exemplo:
+
+`bin` → usado historicamente para gerenciar programas básicos do sistema.
+`sys` → ligado a funções do sistema e serviços antigos.
+`games` → usado para rodar jogos sem dar acesso desnecessário a outros arquivos.
+`www-data` → usado por servidores web como o Apache ou Nginx para que, se o servidor for comprometido, o invasor tenha acesso limitado.
 
 Também vale notar que você pode editar o arquivo `/etc/passwd` manualmente se quiser adicionar usuários ou modificar informações, usando a ferramenta `vipw`.  
 Entretanto, esse tipo de tarefa é melhor ser feita com as ferramentas que veremos mais adiante, como `useradd` e `userdel`.
