@@ -254,5 +254,3 @@ sudo systemctl restart sshd
 - **Log Rotation** → arquivos de log devem ser rotacionados para não ocuparem espaço excessivo (`logrotate`).  
 - **Permissions** → apenas usuários e serviços autorizados devem ter acesso de escrita.  
 - **Backup** → arquivos críticos de `/var` devem ser incluídos em políticas de backup, principalmente logs e bancos de dados de aplicativos.
-
-
