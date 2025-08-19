@@ -176,4 +176,54 @@ sudo systemctl restart mysql
 sudo systemctl restart postgresql
 sudo systemctl restart sshd
 ```
+## Diretório `/home`
 
+- É o **local onde ficam as contas de usuário** do sistema Linux.  
+- Serve como **localização primária para arquivos pessoais, documentos, configurações e preferências de cada usuário**.  
+- Cada usuário possui um **subdiretório próprio** dentro de `/home`.  
+  - Exemplo: `/home/junot` para o usuário `junot`.  
+
+### Subdiretórios comuns dentro do diretório de cada usuário
+
+- `Documents` → documentos do usuário.  
+- `Downloads` → arquivos baixados da internet.  
+- `Music` → arquivos de áudio.  
+- `Pictures` → imagens e fotos.  
+- `Public` → arquivos compartilhados com outros usuários.  
+- `Videos` → arquivos de vídeo.  
+
+> Observação: o conteúdo exato dos subdiretórios pode variar conforme o ambiente de desktop ou preferências do usuário.
+
+### Permissões em `/home`
+
+- **User Ownership (propriedade do usuário)**:  
+  - Cada subdiretório é de propriedade do usuário correspondente.  
+  - Apenas o dono e o root podem modificar arquivos e pastas dentro do diretório pessoal, a não ser que permissões adicionais sejam concedidas.  
+
+- **Permissions (permissões)**:  
+  - Linux usa o modelo **user/group/others** para definir permissões de leitura (`r`), escrita (`w`) e execução (`x`).  
+  - Exemplo de visualização de permissões:  
+    ```bash
+    ls -l /home
+    ```
+  - Permite verificar quem pode acessar ou modificar cada pasta e arquivo.  
+
+- **Personalização**:  
+  - Cada usuário pode customizar seu ambiente dentro do `/home`, como temas, arquivos de configuração de aplicativos (`.config`) e outros ajustes pessoais.  
+  - Esses arquivos de configuração geralmente ficam ocultos (começam com `.`) e são carregados automaticamente pelos aplicativos e pelo sistema.
+- **Data Storage (armazenamento de dados)**:  
+  - `/home` é o local principal onde os usuários armazenam seus **arquivos pessoais, documentos, mídia e configurações**.  
+  - É importante gerenciar bem o espaço para evitar problemas de disco cheio.
+
+- **Security (segurança)**:  
+  - Diretórios dentro de `/home` são **protegidos contra acessos não autorizados**.  
+  - Usuários comuns **não podem acessar o diretório pessoal de outros usuários** sem permissões específicas.  
+  - O root, porém, pode acessar qualquer diretório.
+
+### Boas práticas em `/home`
+
+- **Notas importantes**:  
+  - **Backup regularmente**: Faça backups frequentes dos arquivos importantes para evitar perda de dados.  
+  - **File Permissions (permissões de arquivos)**: Garanta que cada arquivo e pasta tenha as permissões corretas para **proteger informações pessoais e confidenciais**.  
+  - **Storage Limits (limites de armazenamento)**: Administradores podem definir limites de espaço para usuários, evitando que um único usuário consuma todo o disco.  
+  - **Organization (organização)**: Mantenha o diretório pessoal bem organizado em subpastas (`Documents`, `Downloads`, `Music`, etc.) para facilitar o acesso e gerenciamento.
