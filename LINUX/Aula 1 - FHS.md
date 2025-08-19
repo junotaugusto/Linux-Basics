@@ -41,7 +41,7 @@
 
 - **Antigamente**:  
   O diretório `/bin` armazenava apenas os **binários essenciais** para inicializar o sistema e permitir que ele fosse usado mesmo em modo de recuperação (single-user mode). 
-   
+
   Já o diretório `/usr/bin` continha outros binários considerados "não essenciais", ou seja, programas adicionais para o uso cotidiano.  
 
   Isso acontecia porque o diretório `/usr` podia estar em **outra partição**, que não era montada imediatamente durante o boot. Dessa forma, o sistema precisava garantir que os comandos básicos estivessem sempre disponíveis em `/bin`, mesmo sem acesso ao `/usr`.
@@ -61,3 +61,119 @@
 
 - **Conceito histórico**:  
   Apesar dessa mudança técnica, o conceito de `/bin` como “local dos binários essenciais” continua sendo ensinado, pois faz parte do **FHS** e ajuda a entender a evolução da organização dos diretórios no Linux.
+
+## Diretório `/sbin`
+
+- Contém **binários executáveis usados principalmente para administração do sistema**.  
+- Normalmente, esses comandos exigem **privilégios de root**, pois envolvem alterações críticas que afetam o funcionamento do sistema operacional.  
+- São usados por **administradores de sistema (sysadmins)** em tarefas como inicialização, desligamento, reparo de discos e gerenciamento de partições.  
+
+### Exemplos de comandos comuns em `/sbin`
+
+- `fdisk` → manipula tabelas de partição em discos.  
+- `fsck` → verifica e repara sistemas de arquivos.  
+- `init` → processo inicial que dá início à inicialização do sistema (nas distribuições modernas, muitas vezes substituído por `systemd`).  
+- `reboot` → reinicia o sistema.  
+- `shutdown` → desliga ou reinicia o sistema de forma controlada.  
+
+### Informações complementares
+
+- **Usuário comum vs root**:  
+  - Usuários comuns geralmente **não têm permissão** para executar diretamente esses comandos.  
+  - Eles podem, no entanto, usar ferramentas como `sudo`, que significa **super user do (superusuário faz)**  para executar determinadas tarefas administrativas.  
+
+- **Mudança em distribuições modernas**:  
+  Assim como aconteceu com `/bin`, muitas distribuições modernas **unificaram** o `/sbin` dentro de `/usr/sbin`.  
+  - `/sbin` → link simbólico para `/usr/sbin`.  
+
+- **Diferença histórica entre `/bin` e `/sbin`**:  
+  - `/bin` → comandos essenciais usados tanto por usuários comuns quanto pelo sistema.  
+  - `/sbin` → comandos essenciais voltados para **administração e manutenção do sistema**.  
+
+## Diretório `/etc`
+
+- Contém **arquivos de configuração** do sistema operacional e de diversos serviços e aplicativos.  
+- Pode ser considerado o **“Control Center”** do sistema, já que praticamente toda a configuração do Linux é feita através de arquivos de texto localizados nesse diretório.  
+- O conteúdo do `/etc` pode variar de acordo com a **distribuição do Linux** utilizada e com os **softwares instalados**.  
+
+### Características importantes
+
+- Todos os arquivos em `/etc` são, em geral, **arquivos de texto simples**.  
+- Podem ser editados com qualquer editor de texto (como `nano`, `vim` ou `gedit`).  
+- A edição desses arquivos normalmente requer privilégios de **root**.  
+
+### Exemplos de arquivos e diretórios em `/etc`
+
+- `/etc/passwd` → informações básicas sobre usuários do sistema.  
+- `/etc/shadow` → senhas (criptografadas) dos usuários.  
+- `/etc/group` → informações sobre grupos de usuários.  
+- `/etc/fstab` → lista de sistemas de arquivos a serem montados na inicialização.  
+- `/etc/hosts` → mapeamento de endereços IP para nomes de host.  
+- `/etc/hostname` → nome do host (computador) no sistema.  
+- `/etc/network/` → configuração de rede (dependendo da distro).  
+- `/etc/ssh/` → configurações do servidor SSH.
+- `/etc/resolv.conf`→ configurações do DNS.
+
+
+### Informações complementares
+
+- A **estrutura do `/etc`** é um dos pontos mais sensíveis do Linux.  
+  - Configurações incorretas podem comprometer a inicialização, a segurança ou a conectividade da máquina.  
+- Muitos serviços (como Apache, Nginx, MySQL, SSH, etc.) armazenam suas configurações em subdiretórios dentro de `/etc`.  
+- Uma boa prática é **fazer backup de arquivos de configuração antes de editá-los**, para poder restaurar caso algo dê errado.  
+
+### Subdiretórios e arquivos importantes dentro de `/etc`
+
+O diretório `/etc` contém não apenas arquivos, mas também subdiretórios específicos para cada serviço instalado no sistema. Alguns exemplos importantes:
+
+#### `/etc/apache2`
+
+- Contém os arquivos de configuração do **servidor web Apache**.  
+- Permite configurar virtual hosts, módulos, diretivas de segurança, logs e muito mais.  
+- Arquivos relevantes:
+  - `apache2.conf` → configuração principal do Apache.
+  - `sites-available/` e `sites-enabled/` → configuração de sites virtual hosts.
+  - `mods-available/` e `mods-enabled/` → configuração de módulos do Apache.
+
+#### `/etc/nginx`
+
+- Contém os arquivos de configuração do **servidor web Nginx**.  
+- Permite definir servidores virtuais, redirecionamentos, caches e regras de segurança.  
+- Arquivos relevantes:
+  - `nginx.conf` → configuração principal do Nginx.
+  - `sites-available/` e `sites-enabled/` → configuração de sites virtuais (como no Apache).
+
+#### `/etc/mysql/my.cnf`
+
+- Arquivo de configuração principal do **MySQL** (ou MariaDB em algumas distros).  
+- Define parâmetros como portas de conexão, diretórios de dados, buffers de memória, logs e permissões.  
+- Pode ser dividido em seções `[client]`, `[mysqld]`, `[mysqld_safe]` para diferentes componentes do MySQL.
+
+#### `/etc/postgresql/postgresql.conf`
+
+- Arquivo de configuração principal do **PostgreSQL**.  
+- Controla parâmetros de desempenho, autenticação, logs, conexão e replicação.  
+- É possível ajustá-lo para otimizar o banco de dados de acordo com a carga de trabalho.
+
+#### `/etc/ssh/sshd_config`
+
+- Arquivo de configuração do **servidor SSH** (`sshd`).  
+- Permite definir:
+  - Portas de conexão.
+  - Métodos de autenticação.
+  - Controles de acesso de usuários.
+  - Configurações de segurança como desabilitar login de root remoto.
+
+### Informações complementares
+
+- **Backup antes de alterar**: Antes de editar qualquer arquivo nesses diretórios, é **essencial criar uma cópia de segurança** para restaurar em caso de problemas.  
+- **Reiniciar serviços**: Após alterações em arquivos de configuração de serviços (`apache2`, `nginx`, `mysql`, `postgresql`, `ssh`), geralmente é necessário **reiniciar o serviço** para que as mudanças tenham efeito. Exemplos:
+
+```bash
+sudo systemctl restart apache2
+sudo systemctl restart nginx
+sudo systemctl restart mysql
+sudo systemctl restart postgresql
+sudo systemctl restart sshd
+```
+
