@@ -284,3 +284,153 @@ sudo systemctl restart sshd
 - **Package Management**: O conteúdo de `/usr` geralmente é gerenciado pelo sistema de pacotes da distribuição (apt, yum/dnf, pacman, etc.).  
 - **User Access**: Programas em `/usr/bin` podem ser executados por todos os usuários, mas arquivos administrativos em `/usr/sbin` normalmente exigem privilégios elevados.  
 
+## Diretório /opt
+
+O diretório `/opt` é utilizado para armazenar **pacotes de software adicionais** que não fazem parte do sistema base. Ele foi projetado para instalação de softwares **opcionais**, normalmente provenientes de **terceiros** ou fora do ciclo padrão de pacotes da distribuição.
+
+---
+
+### Por que utilizar?
+
+- **Organização** → Mantém softwares que não fazem parte do sistema base em um local separado, facilitando manutenção e remoção.  
+- **Isolamento** → Evita conflitos entre pacotes e bibliotecas de softwares diferentes.  
+- **Flexibilidade** → Permite instalação manual ou via scripts sem interferir no restante do sistema.  
+
+---
+
+### Estrutura típica em `/opt`
+
+Quando um software é instalado em `/opt`, geralmente cria um diretório próprio com o nome do pacote.  Exemplo: se você instalar o **MySQL Data Server**, ele pode criar:  
+/opt/mysql/
+├── bin/ (executáveis)
+├── lib/ (bibliotecas)
+├── etc/ (configurações do software)
+├── data/ (arquivos e bases de dados)
+└── doc/ (documentação)
+
+
+Assim, tudo relacionado ao software fica **contido em um único diretório**, facilitando migração ou remoção.
+
+### Pontos-chave
+
+- **Permissão e posse** → Dependem do software; alguns exigem privilégios de root para instalação.  
+- **Gerenciamento de pacotes** →  
+  - Softwares instalados via **gerenciador de pacotes** (APT, DNF, etc.) normalmente não usam `/opt`.  
+  - Softwares de terceiros ou instalados **manualmente** (ex.: download de tar.gz, binários proprietários, jogos, IDEs) costumam ficar em `/opt`.  
+- **Configuração** → Alguns softwares armazenam seus arquivos de configuração em `/opt`, outros seguem o padrão e utilizam `/etc`.  
+- **Limpeza** → Ao remover um software instalado em `/opt`, é responsabilidade do administrador excluir todos os arquivos/diretórios associados.  
+
+---
+
+## Observações importantes
+
+- `/opt` é **menos usado em distribuições modernas** quando comparado a `/usr/local`.  
+- A diferença é:  
+  - `/usr/local` → software **compilado/instalado pelo administrador** a partir do código-fonte.  
+  - `/opt` → software de **terceiros**, geralmente distribuído como pacote fechado ou pré-compilado.  
+
+## Diretório /dev
+
+- **Um virtual filesystem** que representa dispositivos de hardware em forma de arquivos.  
+- Permite que o sistema operacional interaja com os hardwares usando **operações padrão de arquivos** (abrir, ler, escrever, fechar).  
+
+### Exemplos
+- **/dev/sda, /dev/sdb** → discos rígidos ou SSDs.  
+- **/dev/cdrom** → unidade de CD/DVD.  
+- **/dev/ttyUSB0, /dev/ttyUSB1** → portas seriais/USB.  
+- **/dev/null** → "buraco negro", descarta dados escritos nele.  
+- **/dev/zero** → gera uma sequência infinita de zeros (usado para testes, preenchimento de discos, etc).  
+
+### Por que é importante?
+- **Device Abstraction** → ao tratar dispositivos como arquivos, o Linux fornece uma interface **consistente** para interagir com diversos hardwares.  
+- **Drivers de dispositivos** → drivers criam os arquivos em `/dev` que representam o hardware no sistema.  
+- **Interação com o usuário** → usuários podem acessar e controlar dispositivos utilizando comandos como `dd`, `hdparm`, entre outros.  
+
+### Pontos Chave
+- **Criação dinâmica** → arquivos de dispositivos são criados automaticamente (via `udev`) quando plugamos algum dispositivo ou ao reiniciar o sistema.  
+- **Permissões** → geralmente apenas o usuário **root** tem acesso direto aos arquivos em `/dev`.  
+- **Drivers de dispositivos** → o driver correto precisa estar instalado e carregado para que o dispositivo apareça em `/dev`.  
+
+## Diretório /tmp
+
+O diretório **/tmp** é utilizado para armazenar arquivos temporários criados por programas e pelo próprio sistema.  
+Seu conteúdo é **volátil** e normalmente é apagado quando o sistema reinicia ou após um período de tempo definido. É 
+
+### Características
+- **Armazenamento temporário**: usado por aplicações e processos para guardar arquivos que só são necessários durante a execução.
+- **Acesso de múltiplos usuários**: é um diretório acessível por qualquer usuário do sistema.
+- **Permissões especiais (Sticky Bit)**: normalmente configurado com a permissão `1777`, o que significa:
+  - Todos os usuários podem **criar arquivos**.
+  - Somente o **dono** do arquivo (ou o root) pode **apagá-lo**.
+
+### Exemplos de uso
+- Navegadores salvando arquivos temporários durante downloads.
+- Aplicativos que criam arquivos de lock (ex.: `.X0-lock`).
+- Scripts ou programas que precisam de espaço temporário para processamento de dados.
+
+### Importância
+- **Desempenho**: evita que programas precisem criar arquivos permanentes apenas para uso rápido.
+- **Segurança**: o sticky bit protege arquivos de usuários contra exclusão por outros.
+- **Limpeza automática**: garante que o sistema não fique acumulando lixo após reinicializações.
+
+### Pontos chave
+- O conteúdo de `/tmp` **não deve ser considerado permanente**.
+- Arquivos grandes e temporários podem ser escritos aqui, mas há risco de perda após reboot.
+- É um dos alvos de segurança mais monitorados, pois qualquer usuário pode gravar nele.
+- Algumas distribuições configuram `/tmp` como parte da memória (tmpfs), aumentando a velocidade de acesso.
+
+## Outros Diretórios Importantes no Linux
+
+### Diretório /boot
+- Contém os arquivos necessários para o **processo de inicialização** do sistema.
+- Normalmente inclui:
+  - Kernel do Linux (`vmlinuz`).
+  - Ramdisk inicial (`initrd` ou `initramfs`).
+  - Configurações do bootloader (ex.: GRUB).
+- Importância:
+  - Sem os arquivos do `/boot`, o sistema não consegue iniciar.
+  - Em alguns sistemas, pode estar em uma **partição separada** para facilitar a recuperação.
+
+### Diretório /mnt
+- Usado como **ponto de montagem temporário** para sistemas de arquivos.
+- Exemplo:
+  - Montar um dispositivo manualmente:  
+    ```bash
+    mount /dev/sdb1 /mnt
+    ```
+- Importância:
+  - Serve para acessos rápidos de dispositivos de forma temporária.
+  - Montagens permanentes geralmente usam `/media` ou diretórios personalizados em `/mnt`.
+
+### Diretório /proc
+- É um **filesystem virtual** que expõe informações do kernel e dos processos em tempo real.
+- Características:
+  - Não ocupa espaço em disco (é gerado pelo kernel).
+  - Exemplos:
+    - `/proc/cpuinfo` → informações sobre o processador.
+    - `/proc/meminfo` → informações de memória.
+    - `/proc/[PID]/` → informações sobre processos específicos.
+- Importância:
+  - Ferramenta de **diagnóstico** e **monitoramento**.
+  - Usado por comandos como `ps`, `top`, `free`, etc.
+
+### Diretório /srv
+- Significa **"service"**.
+- Usado para armazenar dados servidos por serviços de rede.
+- Exemplos:
+  - `/srv/ftp` → arquivos de um servidor FTP.
+  - `/srv/www` → conteúdo de um servidor web.
+- Importância:
+  - Ajuda a manter a organização do sistema, separando dados de serviços de outros diretórios.
+
+### Diretório /sys
+- Outro **filesystem virtual**, introduzido com o kernel 2.6.
+- Contém informações sobre dispositivos, drivers e subsistemas do kernel.
+- Diferença em relação ao `/proc`:
+  - `/proc` → foco em processos e status do sistema.
+  - `/sys` → foco em **dispositivos e kernel modules**.
+- Exemplo:
+  - `/sys/class/net/` → informações sobre interfaces de rede.
+- Importância:
+  - Permite que administradores e programas **interajam diretamente com dispositivos**.
+  - Usado por ferramentas como `udev` para gerenciar hardware em tempo real.
