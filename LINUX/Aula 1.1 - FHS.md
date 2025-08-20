@@ -284,7 +284,7 @@ sudo systemctl restart sshd
 - **Package Management**: O conteúdo de `/usr` geralmente é gerenciado pelo sistema de pacotes da distribuição (apt, yum/dnf, pacman, etc.).  
 - **User Access**: Programas em `/usr/bin` podem ser executados por todos os usuários, mas arquivos administrativos em `/usr/sbin` normalmente exigem privilégios elevados.  
 
-## Diretório /opt
+## Diretório `/opt`
 
 O diretório `/opt` é utilizado para armazenar **pacotes de software adicionais** que não fazem parte do sistema base. Ele foi projetado para instalação de softwares **opcionais**, normalmente provenientes de **terceiros** ou fora do ciclo padrão de pacotes da distribuição.
 
@@ -329,7 +329,7 @@ Assim, tudo relacionado ao software fica **contido em um único diretório**, fa
   - `/usr/local` → software **compilado/instalado pelo administrador** a partir do código-fonte.  
   - `/opt` → software de **terceiros**, geralmente distribuído como pacote fechado ou pré-compilado.  
 
-## Diretório /dev
+## Diretório `/dev`
 
 - **Um virtual filesystem** que representa dispositivos de hardware em forma de arquivos.  
 - Permite que o sistema operacional interaja com os hardwares usando **operações padrão de arquivos** (abrir, ler, escrever, fechar).  
@@ -351,7 +351,7 @@ Assim, tudo relacionado ao software fica **contido em um único diretório**, fa
 - **Permissões** → geralmente apenas o usuário **root** tem acesso direto aos arquivos em `/dev`.  
 - **Drivers de dispositivos** → o driver correto precisa estar instalado e carregado para que o dispositivo apareça em `/dev`.  
 
-## Diretório /tmp
+## Diretório `/tmp`
 
 O diretório **/tmp** é utilizado para armazenar arquivos temporários criados por programas e pelo próprio sistema.  
 Seu conteúdo é **volátil** e normalmente é apagado quando o sistema reinicia ou após um período de tempo definido. É 
@@ -381,7 +381,7 @@ Seu conteúdo é **volátil** e normalmente é apagado quando o sistema reinicia
 
 ## Outros Diretórios Importantes no Linux
 
-### Diretório /boot
+### Diretório `/boot`
 - Contém os arquivos necessários para o **processo de inicialização** do sistema.
 - Normalmente inclui:
   - Kernel do Linux (`vmlinuz`).
@@ -391,7 +391,7 @@ Seu conteúdo é **volátil** e normalmente é apagado quando o sistema reinicia
   - Sem os arquivos do `/boot`, o sistema não consegue iniciar.
   - Em alguns sistemas, pode estar em uma **partição separada** para facilitar a recuperação.
 
-### Diretório /mnt
+### Diretório `/mnt`
 - Usado como **ponto de montagem temporário** para sistemas de arquivos.
 - Exemplo:
   - Montar um dispositivo manualmente:  
@@ -402,7 +402,7 @@ Seu conteúdo é **volátil** e normalmente é apagado quando o sistema reinicia
   - Serve para acessos rápidos de dispositivos de forma temporária.
   - Montagens permanentes geralmente usam `/media` ou diretórios personalizados em `/mnt`.
 
-### Diretório /proc
+### Diretório `/proc`
 - É um **filesystem virtual** que expõe informações do kernel e dos processos em tempo real.
 - Características:
   - Não ocupa espaço em disco (é gerado pelo kernel).
@@ -414,7 +414,7 @@ Seu conteúdo é **volátil** e normalmente é apagado quando o sistema reinicia
   - Ferramenta de **diagnóstico** e **monitoramento**.
   - Usado por comandos como `ps`, `top`, `free`, etc.
 
-### Diretório /srv
+### Diretório `/srv`
 - Significa **"service"**.
 - Usado para armazenar dados servidos por serviços de rede.
 - Exemplos:
@@ -423,7 +423,7 @@ Seu conteúdo é **volátil** e normalmente é apagado quando o sistema reinicia
 - Importância:
   - Ajuda a manter a organização do sistema, separando dados de serviços de outros diretórios.
 
-### Diretório /sys
+### Diretório `/sys`
 - Outro **filesystem virtual**, introduzido com o kernel 2.6.
 - Contém informações sobre dispositivos, drivers e subsistemas do kernel.
 - Diferença em relação ao `/proc`:
