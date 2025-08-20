@@ -1,4 +1,5 @@
 1. Qual é a função do diretório `/` no Linux? 
+
 *R: O diretório / é a raiz do sistema Linux. Ele é o ponto de partida da hierarquia de diretórios e contém todos os outros diretórios e arquivos do sistema.*
 
 2. Onde ficam armazenados os arquivos de configuração do sistema?
