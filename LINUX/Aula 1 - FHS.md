@@ -254,3 +254,33 @@ sudo systemctl restart sshd
 - **Log Rotation** → arquivos de log devem ser rotacionados para não ocuparem espaço excessivo (`logrotate`).  
 - **Permissions** → apenas usuários e serviços autorizados devem ter acesso de escrita.  
 - **Backup** → arquivos críticos de `/var` devem ser incluídos em políticas de backup, principalmente logs e bancos de dados de aplicativos.
+
+## Diretório `/usr`
+
+- O diretório `/usr` armazena **programas, bibliotecas, documentação e outros arquivos de suporte** para os usuários e para o sistema.  
+- Historicamente, `/usr` era considerado “Unix System Resources” e continha programas que não eram essenciais para o boot (diferente de `/bin` e `/sbin`).  
+- Hoje, em muitas distribuições modernas, há **unificação de diretórios** (ex.: `/bin` → `/usr/bin`), mas o conceito original ainda é mantido para fins de organização e compatibilidade.
+
+### Diretórios chave dentro de `/usr`
+
+- `/usr/bin` → contém binários executáveis disponíveis para **todos os usuários** (a maioria dos programas comuns do sistema está aqui).  
+- `/usr/sbin` → contém binários administrativos do sistema. Normalmente requer privilégios de root para execução.  
+- `/usr/lib` → contém **bibliotecas compartilhadas** necessárias para os programas em `/usr/bin` e `/usr/sbin`.  
+- `/usr/local` → usado para software instalado **fora do sistema de pacotes da distribuição**.  
+  - Muito útil para programas compilados manualmente.  
+- `/usr/share` → contém arquivos **compartilhados e independentes de arquitetura**, como documentação, ícones, manuais, arquivos de configuração padrão.  
+- `/usr/src` → contém **código-fonte** de programas e do kernel (em algumas distros, usado para desenvolvimento e compilação).
+
+### Por que `/usr` é importante?
+
+- **Execução de programas**: `/usr/bin` e `/usr/sbin` são essenciais para rodar a maioria dos comandos e serviços.  
+- **Compartilhamento de bibliotecas**: `/usr/lib` garante eficiência ao permitir que vários programas utilizem as mesmas bibliotecas.  
+- **Instalação de software**: muitos pacotes de software são instalados dentro de `/usr`, mantendo a organização do sistema.  
+- **Documentação do sistema**: `/usr/share/doc` contém manuais, licenças e guias de programas instalados.  
+
+### Pontos chave
+
+- **Read-Only**: Em ambientes corporativos ou de produção, `/usr` pode ser montado como **somente leitura** (read-only), já que não deve ser alterado constantemente.  
+- **Package Management**: O conteúdo de `/usr` geralmente é gerenciado pelo sistema de pacotes da distribuição (apt, yum/dnf, pacman, etc.).  
+- **User Access**: Programas em `/usr/bin` podem ser executados por todos os usuários, mas arquivos administrativos em `/usr/sbin` normalmente exigem privilégios elevados.  
+
