@@ -60,3 +60,4 @@ chmod +x check_log.sh
 ```bash
 ./check_log.sh
 ```
+4 - Caso o arquivo em questão precise de permissão para poder ler, execute o script com sudo.
