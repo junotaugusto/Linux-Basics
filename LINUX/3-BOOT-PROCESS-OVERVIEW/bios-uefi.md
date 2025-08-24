@@ -56,7 +56,7 @@ O **processo de boot** é a sequência de etapas que ocorre desde o momento em q
 
 *Observação adicional: o UEFI não substitui apenas o BIOS em termos de interface, mas também introduz uma arquitetura mais modular e extensível, capaz de carregar drivers e aplicativos independentes do sistema operacional, o que aumenta sua flexibilidade em ambientes moder*
 
-  - **Resumindo**
+## **Resumindo**
 Inicialmente surgiu o BIOS (Basic Input/Output System), responsável por realizar a comunicação básica entre o hardware e o sistema. Mais tarde, foi desenvolvido o UEFI (Unified Extensible Firmware Interface), que trouxe uma interface mais intuitiva e diversas vantagens em relação ao seu antecessor.
 
 O ponto fundamental a compreender é que ambos possuem o mesmo propósito principal: interagir com o hardware, garantir que ele seja corretamente inicializado, assegurar que todo o sistema esteja pronto para iniciar e, então, transferir o controle ao boot loader e, posteriormente, ao próprio sistema operacional.
