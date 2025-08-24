@@ -37,14 +37,7 @@ O **processo de boot** é a sequência de etapas que ocorre desde o momento em q
 - **Basic Input/Output Services:**
   - Fornece serviços básicos de entrada e saída para o sistema operacional, como leitura do teclado, uso do mouse e exibição de informações na tela.
 
----
-
-## Resumindo o Processo
-
-1. O computador é ligado.
-2. O **BIOS/UEFI** executa o **POST** e inicializa o hardware.
-3. O firmware procura o **boot loader** no dispositivo configurado como **primeiro na ordem de boot** (HD, SSD, USB, etc.).
-4. O boot loader carrega o **sistema operacional** na memória.
-5. O sistema operacional assume o controle do hardware e inicia o ambiente de usuário.
-
----
+- **UEFI:**
+  - Unified Extensible Firmware Interface.  
+  - É uma interface de firmware moderna projetada para substituir o BIOS tradicional.  
+  - O UEFI oferece um processo de inicialização mais flexível, rápido e seguro em comparação com seu antecessor.  
