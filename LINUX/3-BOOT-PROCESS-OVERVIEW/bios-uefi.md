@@ -2,8 +2,6 @@
 
 O **processo de boot** é a sequência de etapas que ocorre desde o momento em que o computador é ligado até o carregamento completo do sistema operacional. Ele envolve a inicialização do hardware e a preparação do ambiente para que o sistema possa funcionar.
 
----
-
 ## BIOS vs UEFI
 
 - **BIOS (Basic Input/Output System)**
@@ -19,8 +17,6 @@ O **processo de boot** é a sequência de etapas que ocorre desde o momento em q
   - Interface mais amigável, muitas vezes com suporte a mouse e modo gráfico.
   - Funciona em **32 ou 64 bits**, garantindo inicialização mais rápida e com mais funcionalidades.
   - Possui recursos avançados, como **Secure Boot**, que evita a execução de softwares maliciosos no processo de inicialização.
-
----
 
 ## Funções Principais do BIOS (aplicáveis também no UEFI)
 
@@ -59,12 +55,12 @@ O **processo de boot** é a sequência de etapas que ocorre desde o momento em q
 ## Como o UEFI Funciona
 
 - **Power-On Self-Test (POST):** Assim como no BIOS, o UEFI realiza um autoteste para verificar os componentes de hardware.  
+
 - **Boot Loader Execution:** O UEFI carrega o carregador de inicialização (*boot loader*), que pode ser um carregador compatível com BIOS tradicional ou um carregador nativo do UEFI.  
+
 - **Operating System Boot:** O carregador de inicialização carrega o kernel do sistema operacional e inicializa o sistema.  
 
-Em essência, o **UEFI é uma interface de firmware mais avançada e flexível** que se tornou o padrão para os computadores modernos.  
-
-Ele oferece um processo de inicialização **mais rápido, mais seguro e com mais recursos** em comparação ao BIOS.
+Em essência, o **UEFI é uma interface de firmware mais avançada e flexível** que se tornou o padrão para os computadores modernos. Ele oferece um processo de inicialização **mais rápido, mais seguro e com mais recursos** em comparação ao BIOS.
 
 
 ## **Resumindo**
