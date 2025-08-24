@@ -50,3 +50,13 @@ else
     echo "✅ Nenhum erro encontrado em $LOGFILE"
 fi
 ```
+**Como usar:**
+1 - Salve o conteúdo em um arquivo, por exemplo check_log.sh.
+2 - Dê permissão de execução.
+```bash
+chmod +x check_log.sh
+```
+3 - Execute o script:
+```bash
+./check_log.sh
+```
