@@ -65,12 +65,12 @@ sudo systemctl isolate graphical.target
 ```bash
 systemctl list-unit-files --type=target
 ``` 
-Benefícios dos Boot Targets
+## Benefícios dos Boot Targets
 
-`Flexibilidade: fácil mudar o comportamento do boot entre linha de comando e interface gráfica.`
+**Flexibilidade:** `fácil mudar o comportamento do boot entre linha de comando e interface gráfica.`
 
-`Segurança: permite inicializar em modos de recuperação (rescue/emergency).`
+**Segurança:** `permite inicializar em modos de recuperação (rescue/emergency).`
 
-`Controle: possibilita alternar dinamicamente entre estados do sistema sem reiniciar.`
+**Controle:** `possibilita alternar dinamicamente entre estados do sistema sem reiniciar.`
 
-`Clareza: substitui os antigos runlevels por nomes mais descritivos.`
+**Clareza:** `substitui os antigos runlevels por nomes mais descritivos.`
