@@ -332,15 +332,42 @@ Isso busca o arquivo `new-archive.txt` dentro da pasta `/home`.
 find /var/log -type f -size +10M  
 ```
 
-Isso procura arquivos maiores que 10 MB dentro de `/var/log`.
+Isso procura arquivos maiores que 10 MB dentro de `/var/log`. 
+
+Vale lembrar que o comando `find` pede um **caminho**, seguido de **opções e expressões de teste**.  
+A sintaxe geral é:  
+(find [path] [options] [expression])  
+
+Nos exemplos acima:  
+- Caminho: `/home` ou `/var/log`  
+- Opção: `-name` ou `-size`  
+- Expressão: `"new-archive.txt"` ou `+10M` 
 
 ---
 
 ### Buscar Arquivos no Banco de Dados: `locate`
-O `locate` pesquisa arquivos usando um banco de dados atualizado periodicamente (com `updatedb`). É muito mais rápido que `find`, mas pode não estar 100% atualizado.
+
+O comando `locate` pesquisa arquivos rapidamente em um **banco de dados indexado** do sistema. Esse banco de dados precisa estar atualizado (com o comando `updatedb`), senão os resultados podem não refletir mudanças recentes no sistema de arquivos.  
 
 ```bash
-locate new-archive.txt  
+locate new-archive.txt)  
+```
+Isso procura todas as ocorrências do arquivo `new-archive.txt` no banco de dados.  
+
+```bash
+located *.txt)  
 ```
 
-Se o arquivo estiver indexado, ele aparecerá na busca.
+Isso lista todos os arquivos com extensão `.txt` que estejam indexados.  
+
+A sintaxe básica é:  
+(locate [pattern])  
+
+### Diferença entre `find` e `locate`
+- `find` percorre os diretórios **em tempo real**, garantindo resultados atuais, mas pode ser mais lento.  
+- `locate` usa um banco de dados pré-construído, sendo muito mais rápido, mas pode mostrar resultados desatualizados.  
+
+Exemplo prático:  
+- Se você criar um arquivo agora (echo "teste" > exemplo.txt) e rodar `locate exemplo.txt`, pode ser que ele **não apareça** até que você rode (updatedb).  
+- Já com `find`, o arquivo aparece imediatamente.  
+
