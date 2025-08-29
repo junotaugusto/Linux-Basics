@@ -228,8 +228,119 @@ tar -xzvf arquivos.tar.gz
 ```
 ---
 
-# Resumo
-- Use (whoami) para saber o usuário atual e (hostname) para saber o nome da máquina.  
-- (pwd), (cd) e (ls) são a base da navegação no Linux.  
-- Comandos como (touch), (mkdir), (cp), (mv), (rm), (zip), (tar) permitem gerenciar arquivos e diretórios.  
-- Sempre confira as opções (-h, --help) para aprender mais sobre cada comando.
+### Redirecionamento de Saída: `>`
+O operador `>` é usado para **redirecionar a saída de um comando para um arquivo**. Se o arquivo não existir, ele será criado. Se já existir, o conteúdo será substituído.
+
+```bash
+echo "File Content" > new-archive.txt)  
+```
+Isso cria (ou sobrescreve) o arquivo `new-archive.txt` com o texto "File Content".
+
+---
+
+### Acrescentar Saída: `>>`
+O operador `>>` também redireciona a saída, mas **acrescenta (append)** ao final do arquivo, sem apagar o conteúdo já existente.
+
+```bash
+echo "Nova linha" >> new-archive.txt)  
+```
+Isso adiciona "Nova linha" no final do arquivo `new-archive.txt`.
+
+---
+
+### Executar em Segundo Plano: `&`
+O operador `&` executa um comando em segundo plano, permitindo que o terminal continue sendo usado sem esperar o processo terminar.
+
+```bash
+firefox & 
+```
+Isso abre o navegador Firefox em segundo plano.
+
+---
+
+### Executar Condicionalmente: `&&`
+O operador `&&` executa o segundo comando **apenas se o primeiro for bem-sucedido** (ou seja, se o retorno for 0).
+
+```bash
+mkdir teste && cd teste
+```
+
+Aqui, o diretório `teste` é criado e, se der certo, o terminal entra nele.
+
+---
+
+## Visualizar Arquivo: `cat`
+O comando `cat` exibe o conteúdo de um arquivo diretamente no terminal.
+
+```bash
+cat new-archive.txt
+```
+
+---
+
+### Visualizar Começo e Final: `head` e `tail`
+- `head` mostra as primeiras linhas de um arquivo (por padrão, 10).  
+
+```bash
+head new-archive.txt)  
+```
+
+- `tail` mostra as últimas linhas de um arquivo (por padrão, 10).  
+
+```bash
+tail new-archive.txt
+```
+
+Também é possível especificar quantas linhas mostrar:  
+
+```bash
+head -n 5 new-archive.txt) 
+```
+→ mostra as 5 primeiras linhas.  
+
+```bash
+tail -n 20 new-archive.txt
+```
+→ mostra as 20 últimas linhas.
+
+---
+
+### Leitura Paginada: `less` e `more`
+- `more` mostra o conteúdo de um arquivo **página por página**. Você navega com espaço (avançar) e `q` para sair.  
+
+```bash
+more new-archive.txt
+```
+
+- `less` é mais avançado, permitindo rolar para frente e para trás.  
+
+```bash
+less new-archive.txt
+```
+---
+
+## Buscar Arquivos: `find`
+O comando `find` procura arquivos e diretórios em uma árvore de diretórios, com base em critérios como nome, tamanho, tipo, etc.
+
+```bash
+find /home -name "new-archive.txt"
+```
+
+Isso busca o arquivo `new-archive.txt` dentro da pasta `/home`.
+
+```bash
+find /var/log -type f -size +10M  
+```
+
+Isso procura arquivos maiores que 10 MB dentro de `/var/log`.
+
+---
+
+### Buscar Arquivos no Banco de Dados: `locate`
+O `locate` pesquisa arquivos usando um banco de dados atualizado periodicamente (com `updatedb`). É muito mais rápido que `find`, mas pode não estar 100% atualizado.
+
+```bash
+locate new-archive.txt  
+```
+
+Se o arquivo estiver indexado, ele aparecerá na busca.
