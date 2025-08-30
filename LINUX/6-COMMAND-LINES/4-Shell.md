@@ -54,3 +54,36 @@ if [ "$variável" == "valor" ]; then
 else
     echo "Condição falsa"
 fi
+
+## Tipos de Condições
+Dentro dos colchetes `[ ]`, podemos usar diferentes comparações:  
+
+- **Números**  
+  - (-eq) → igual  
+  - (-ne) → diferente  
+  - (-gt) → maior que  
+  - (-lt) → menor que  
+  - (-ge) → maior ou igual  
+  - (-le) → menor ou igual  
+
+- **Strings**  
+  - (=) → igual  
+  - (!=) → diferente  
+  - (-z) → string vazia  
+  - (-n) → string não vazia  
+
+- **Arquivos**  
+  - (-e arquivo) → existe  
+  - (-f arquivo) → existe e é arquivo normal  
+  - (-d diretório) → existe e é diretório  
+  - (-r arquivo) → tem permissão de leitura  
+  - (-w arquivo) → tem permissão de escrita  
+  - (-x arquivo) → tem permissão de execução  
+
+---
+
+📌 Em resumo:  
+- `if` permite tomar decisões.  
+- Podemos usar `else` para tratar alternativas.  
+- `elif` permite múltiplas verificações.  
+- Existem testes numéricos, de strings e de arquivos. 
