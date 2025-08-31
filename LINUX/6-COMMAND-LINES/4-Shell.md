@@ -87,3 +87,37 @@ Dentro dos colchetes `[ ]`, podemos usar diferentes comparações:
 - Podemos usar `else` para tratar alternativas.  
 - `elif` permite múltiplas verificações.  
 - Existem testes numéricos, de strings e de arquivos. 
+
+## Fazendo um script
+- Digite `nano script1.sh`.
+
+Este script irá verificar se o nome digitado é o que o desenvolvedor quer.
+
+```bash
+!#/bin/bash
+echo "Digite o nome correto: "
+read nome
+
+if [ $nome = "Lucas"]; then
+    echo "Nome correto!"
+else
+    echo "Nome incorreto!"
+fi    
+```
+
+---
+
+Outro script, agora para realizar a automação de alguns serviços.
+
+O script irá verificar se determinado arquivo existe e, caso exista, irá removê-lo.
+
+```bash
+#!/bin/bash
+if [ -f "/home/user/Desktop/arquivo.txt" ]; then
+    echo "O arquivo existe"
+    echo "O arquivo será removido agora"
+    rm -i "/home/user/Desktop/arquivo.txt"
+else
+    echo "O arquivo não existe"
+fi
+```
