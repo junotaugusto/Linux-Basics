@@ -137,3 +137,20 @@ Isso muda o grupo associado ao arquivo para marketing, permitindo que todos os m
 Esses comandos são essenciais para gerenciamento de acesso em sistemas multiusuário, pois permitem controlar quem pode ler, escrever ou executar arquivos com base na propriedade de usuário e grupo, aumentando a organização e a segurança em ambientes Linux.
 
 ---
+
+## Sticky Bit no Linux
+
+O **sticky bit** é um tipo especial de permissão que pode ser aplicado a diretórios no Linux. Ele é usado principalmente para controlar a exclusão de arquivos dentro de um diretório compartilhado entre vários usuários.  
+
+Quando o sticky bit está ativo em um diretório, apenas **o dono do arquivo**, **o dono do diretório** ou o **usuário root** podem excluir ou renomear arquivos dentro desse diretório. 
+
+Isso impede que outros usuários que têm permissão de escrita no diretório excluam arquivos de outras pessoas, aumentando a segurança em ambientes multiusuário.  
+
+Um exemplo comum do uso do sticky bit é no diretório **/tmp**, onde qualquer usuário pode criar arquivos, mas não pode apagar os arquivos de outros usuários. Um exemplo seria:
+```bash
+chmod +t /path/to/directory
+``` 
+
+Em termos de representação:
+- O sticky bit é indicado pela letra **t** no final das permissões de um diretório (por exemplo: `drwxrwxrwt`).
+- Quando definido numericamente, ele corresponde ao valor **1** no primeiro dígito do modo octal (por exemplo, `chmod 1777 /tmp` para ativar o sticky bit).
