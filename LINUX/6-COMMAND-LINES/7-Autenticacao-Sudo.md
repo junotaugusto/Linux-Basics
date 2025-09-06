@@ -34,8 +34,8 @@ Cada linha do arquivo corresponde a um usuário e contém campos separados por d
 - **senha** → Senha criptografada do usuário. Se for `*` ou `!`, significa que o login com senha está desabilitado.
 - **ultimo_alteracao** → Data da última alteração de senha, contada em dias desde 1º de janeiro de 1970.
 - **min** → Número mínimo de dias entre alterações de senha.
-- **max** → Número máximo de dias que a senha pode ser usada antes de expirar.
-- **aviso** → Número de dias antes da expiração que o usuário começará a receber avisos.
+- **max** → Número máximo de dias que a senha pode ser usada antes de expirar. Por motivos de segurança, recomenda-se 90 dias até que o usuário troque a senha novamente.
+- **aviso** → Número de dias antes da expiração que o usuário começará a receber avisos.  
 - **inativo** → Número de dias após a expiração da senha que a conta será desativada.
 - **expiracao** → Data em que a conta expirará (contada em dias desde 1º de janeiro de 1970).
 - **reservado** → Campo reservado para uso futuro.
