@@ -113,3 +113,25 @@ No exemplo `chmod 755` arquivo:
 - 5 → grupo pode ler e executar
 - 5 → outros podem ler e executar
 
+## 6. Mudando a Propriedade
+
+### CHOWN
+Podemos também alterar o dono de um arquivo com o comando `chown`. Por exemplo:
+```bash
+sudo chown joao arquivo.txt
+```
+Isso faz com que o usuário `joao` se torne o dono do arquivo arquivo.txt. O chown também permite alterar simultaneamente o grupo do arquivo, usando a sintaxe:
+```bash
+sudo chown joao:desenvolvimento arquivo.txt
+```
+Neste caso, o dono do arquivo será joao e o grupo será desenvolvimento.
+
+### CHGRP
+
+Já o comando chgrp serve especificamente para alterar apenas o grupo de um arquivo ou diretório. Por exemplo:
+```bash
+chgrp marketing arquivo.txt
+```
+Isso muda o grupo associado ao arquivo para marketing, permitindo que todos os membros desse grupo apliquem as permissões de grupo definidas.
+
+Esses comandos são essenciais para gerenciamento de acesso em sistemas multiusuário, pois permitem controlar quem pode ler, escrever ou executar arquivos com base na propriedade de usuário e grupo, aumentando a organização e a segurança em ambientes Linux.
