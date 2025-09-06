@@ -29,7 +29,7 @@ Depois disso, o usuário `joao` poderá usar `sudo` antes de comandos que necess
 O arquivo **/etc/sudoers** é onde se configuram as permissões detalhadas de quem pode usar `sudo` e como. Esse arquivo deve sempre ser editado com o comando:
 
 ```bash
-visudo
+sudo visudo
 ```
 
 O `visudo` garante que o arquivo não seja salvo com erros de sintaxe, o que poderia comprometer o acesso administrativo ao sistema.
@@ -41,3 +41,4 @@ O `visudo` garante que o arquivo não seja salvo com erros de sintaxe, o que pod
 Dentro do arquivo sudoers, é possível definir que apenas certos comandos possam ser executados por determinados usuários ou grupos. Por exemplo, pode-se permitir que um usuário reinicie serviços, mas não tenha permissão para alterar arquivos do sistema.  
 
 Isso garante maior segurança, pois os administradores podem conceder apenas os privilégios necessários, em vez de liberar acesso completo de root.
+
