@@ -134,4 +134,4 @@ chgrp marketing arquivo.txt
 ```
 Isso muda o grupo associado ao arquivo para marketing, permitindo que todos os membros desse grupo apliquem as permissões de grupo definidas.
 
-Esses comandos são essenciais para gerenciamento de acesso em sistemas multiusuário, pois permitem controlar quem pode ler, escrever ou executar arquivos com base na propriedade de usuário e grupo, aumentando a organização e a segurança em ambientes Linux. 
+Esses comandos são essenciais para gerenciamento de acesso em sistemas multiusuário, pois permitem controlar quem pode ler, escrever ou executar arquivos com base na propriedade de usuário e grupo, aumentando a organização e a segurança em ambientes Linux.  
