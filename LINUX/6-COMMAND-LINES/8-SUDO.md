@@ -42,3 +42,30 @@ Dentro do arquivo sudoers, é possível definir que apenas certos comandos possa
 
 Isso garante maior segurança, pois os administradores podem conceder apenas os privilégios necessários, em vez de liberar acesso completo de root.
 
+## Estrutura Básica
+
+A regra geral dentro do `sudoers` segue este formato:
+**usuário host = (usuários_alvo) comandos**
+
+- **usuário** → Nome do usuário ou grupo (grupos começam com `%`).
+- **host** → Em quais máquinas essa regra se aplica (`ALL` para todas).
+- **usuários_alvo** → Usuário para o qual o comando será executado (geralmente `ALL`).
+- **comandos** → Lista de comandos que podem ser executados.
+
+## Exemplos
+
+### 1. Dar acesso total a um usuário
+`joao ALL=(ALL:ALL) ALL`
+👉 O usuário `joao` pode executar qualquer comando como root ou outro usuário.
+
+### 2. Dar acesso total a um usuário e ele não precisa nem de senha:
+`joao ALL=(ALL) NO PASSWD: ALL`
+
+### 3. Dar acesso apenas a alguns comandos
+`joao ALL=(ALL) /usr/bin/apt, /usr/bin/systemctl`
+👉 O usuário `joao` só pode rodar `apt` e `systemctl` com sudo.
+
+### 4. Restringir o acesso a um único comando
+`joao ALL=(ALL) ALL, !/usr/bin/rm`
+👉 `joao` só poderá reiniciar a máquina com `sudo reboot`, nada mais.
+
