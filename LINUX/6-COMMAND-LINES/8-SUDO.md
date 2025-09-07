@@ -69,3 +69,18 @@ A regra geral dentro do `sudoers` segue este formato:
 `joao ALL=(ALL) ALL, !/usr/bin/rm`
 👉 `joao` só poderá reiniciar a máquina com `sudo reboot`, nada mais.
 
+### ### 5. Negar comandos específicos
+`junot ALL=(ALL) ALL, !/usr/bin/rm`
+👉 `joao` pode rodar qualquer comando, exceto `rm`.
+
+### 6. Usando grupos
+`%sudo ALL=(ALL:ALL) ALL`
+👉 Todos os usuários no grupo `sudo` têm acesso total.
+
+### Boas Práticas
+- Sempre use (visudo) para editar.  
+- Restrinja permissões ao mínimo necessário (princípio do menor privilégio).  
+- Prefira criar grupos para facilitar a administração.  
+- Teste o acesso com:  
+  (sudo -l -U nome_do_usuario)  
+  Isso mostra a lista de comandos permitidos para aquele usuário.
