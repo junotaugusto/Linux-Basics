@@ -44,7 +44,7 @@ Passos típicos:
 3. Setor inicial e final (ou tamanho, como `+2G`).  
 
 ### Comando `d`
-Apaga uma partição existente.
+Apaga uma partição existente. Ele irá demonstrar as partições e você poderá deletá-las por meio de seus números. 
 ⚠️ Remove todos os dados da partição escolhida.
 
 ### Comando `t`
@@ -56,7 +56,7 @@ Exemplos:
 - `ef` → EFI System.  
 
 ### Comando `w`
-Grava as mudanças feitas no disco e **sai**.
+Grava as mudanças feitas no disco e **sai**. Toda e qualquer modificação feita com outros comandos devem ser salvas por meio de `w`.
 ⚠️ Alterações não podem ser desfeitas após este comando.
 
 ### Comando `q`
@@ -73,14 +73,19 @@ Sai do `fdisk` **sem salvar** alterações.
 2. `p` → listar partições.  
 3. `n` → criar partição.  
 4. `t` → definir tipo.  
-5. `w` → salvar e sair.  
+5. `w` → salvar e sair.
 
----
+## lsblk
 
-## Exemplo Prático
+O comando `lsblk` é utilizado para listar informações de todos os dispositivos disponíveis no sistema. Os campos comuns no output deste comando são:
 
-bash
-
+`NAME`: O nome do dispositivo bloco (sda, sdb, sda1, sr0).
+`MAJ:MIN`: Os números dos dispositivos maiores (MAJ) e menores (MIN). O número maior identifica o driver do dispositivo, enquanto o número menor identifica o dispositivo gerenciado por aquele driver. 
+`RM`: Indica se p dispositivo é removível. Se for `1`, é removível. Se for `0`, não.
+`SIZE`: O tamanho do dispositivo bloco.
+`RO`: Indica se o dispositivo é apenas leitura sendo 1 para sim (read only) e 0 para read and write.
+`TYPE`: Indica o tipo do dispositivo bloco (disco, parte de uma partição, rom read-only memory, loop para dispositivos loop).
+`MOUNTPOINT`: É o diretório onde o dispositivo está montado dentro do sistema de arquivos, se aplicável.
 
 
 
