@@ -118,3 +118,4 @@ Exemplo:
 - **Broadcast Address:** último IP da rede.  
 
 > Subnetting é essencial para otimizar redes, reduzir congestionamentos e melhorar segurança e controle administrativo.
+ 
