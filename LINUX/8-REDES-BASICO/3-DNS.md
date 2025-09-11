@@ -19,9 +19,9 @@ O **DNS (Domain Name System)** é um sistema hierárquico e distribuído que tra
 2. O sistema consulta o **resolver local** (geralmente configurado pelo provedor de internet ou roteador).  
 3. Se não houver cache no seu navegador, o resolver envia uma consulta a servidores **DNS raiz**.  
 4. A partir daí, a consulta percorre a hierarquia:
-   - **Servidor raiz** → indica o servidor responsável pelo TLD (`.com`, `.org`, `.br`, etc.).  
-   - **Servidor TLD** → indica o servidor autoritativo para `exemplo.com`.  
-   - **Servidor autoritativo** → fornece o endereço IP do host solicitado (`www.exemplo.com`).  
+   - **Servidor raiz** → Ele indica o servidor responsável pelo TLD (`.com`, `.org`, `.br`, etc.), que no caso, é o servidor TLD.  
+   - **Servidor TLD** → Ele indica o servidor autoritativo para `exemplo.com`.  
+   - **Servidor autoritativo** → Ele fornece o endereço IP do host solicitado (`www.exemplo.com`).  
 5. O navegador então se conecta ao IP retornado.
 
 ---

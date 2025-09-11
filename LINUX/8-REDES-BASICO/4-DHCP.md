@@ -58,9 +58,7 @@ Agora, o cliente pode usar `192.168.1.100` até o tempo do **lease expirar**.
 
 ## Renovação de IP
 
-O **DHCP Lease** é o período de tempo durante o qual um endereço IP, atribuído dinamicamente por um servidor DHCP, permanece válido para um dispositivo na rede.  
-
-Esse conceito é importante porque garante que os endereços IP não fiquem ocupados indefinidamente, permitindo que sejam reutilizados quando não forem mais necessários.
+O **DHCP Lease** é o período de tempo durante o qual um endereço IP, atribuído dinamicamente por um servidor DHCP, permanece válido para um dispositivo na rede. Esse conceito é importante porque garante que os endereços IP não fiquem ocupados indefinidamente, permitindo que sejam reutilizados quando não forem mais necessários.
 
 ### Como funciona
 - Antes de o **lease time** expirar, o cliente envia uma requisição ao servidor para renovar o mesmo endereço IP.  
