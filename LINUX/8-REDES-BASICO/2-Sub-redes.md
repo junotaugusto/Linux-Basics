@@ -31,8 +31,7 @@ Neste caso: **24 bits para rede** e **8 bits para host**.
 
 ## CIDR Notation (/24, /26, etc.)
 
-O **CIDR (Classless Inter-Domain Routing)** é uma forma simplificada de representar máscaras de sub-rede.  
-Ele indica **quantos bits, a partir da esquerda, são usados para a rede**.
+O **CIDR (Classless Inter-Domain Routing)** é uma forma simplificada de representar máscaras de sub-rede. Ele indica **quantos bits, a partir da esquerda, são usados para a rede**.
 
 ### Exemplos
 
@@ -53,7 +52,7 @@ Ele indica **quantos bits, a partir da esquerda, são usados para a rede**.
 
 ### Por que isso é útil?
 
-Imagine que uma empresa tem uma rede **/24 (254 hosts disponíveis)**, mas um setor precisa de apenas **23 computadores** a mais. Em vez de desperdiçar uma rede inteira com mais um octeto, o administrador pode criar uma sub-rede **/27**, que fornece **30 endereços para hosts**, atendendo à necessidade de forma mais eficiente.
+Imagine que uma empresa tem uma rede **/24 (254 hosts disponíveis)**, mas um setor precisa de **23 computadores** a mais. Em vez de desperdiçar uma rede inteira com mais um octeto (254 hosts), o administrador pode criar uma sub-rede **/27**, que fornece **30 endereços para hosts**, atendendo à necessidade de forma mais eficiente.
 
 Primeiro, vê-se quantos hosts são necessários. No caso: 23 dispositivos. Mas como precisamos sempre reservar 2 endereços (um para Network Address e outro para Broadcast Address), a conta mínima é: 23 + 2 = 25 endereços.
 
