@@ -77,3 +77,74 @@ O tempo de permanência no cache é definido pelo **TTL (Time To Live)** do regi
 - **Cache** melhora desempenho, mas pode causar problemas se registros forem alterados antes do TTL expirar.  
 
 > Sem o DNS, a internet seria navegada apenas por endereços numéricos, tornando-a muito menos prática para os usuários.
+
+---
+
+## Exemplo de DNS Server
+
+# Como funciona a resolução de nomes no DNS
+
+![alt text](<Captura de Tela 2023-12-05 às 13.55.40.png>)
+
+A imagem ilustra o processo que ocorre quando um usuário tenta acessar o endereço **self.repair.apple.com**. Esse processo é chamado de **resolução recursiva de nomes** e envolve diversos servidores DNS até que se chegue ao endereço IP correto (ou uma resposta negativa).
+
+---
+
+## Passo a passo da resolução
+
+1. **Verificação local**
+   - O computador do usuário (cliente) verifica primeiro no **cache DNS local** e no **arquivo hosts** se já possui o endereço de `self.repair.apple.com`.
+   - Se não encontrar, a consulta é enviada ao **servidor DNS local** (geralmente fornecido pelo roteador ou provedor de internet).
+
+2. **Servidor DNS local**
+   - O servidor DNS local recebe a requisição e, se não tiver a resposta em cache, começa a buscar perguntando a outros servidores na internet.
+
+3. **Consulta ao Root Server**
+   - O DNS local pergunta a um **Root Server**: "Onde está `self.repair.apple.com`?"
+   - O Root Server responde: "Não sei exatamente, mas sei quem cuida do `.com`. Pergunte a ele."
+
+4. **Consulta ao servidor TLD (.com)**
+   - O DNS local envia a pergunta ao servidor responsável pelos domínios `.com`.
+   - Resposta: "Não sei o `self.repair.apple.com`, mas sei quem cuida de `apple.com`. Pergunte para ele."
+
+5. **Consulta ao servidor autoritativo de apple.com**
+   - O DNS local pergunta: "Onde está `self.repair.apple.com`?"
+   - O servidor de `apple.com` responde: "Não tenho esse subdomínio, mas sei quem cuida de `repair.apple.com`."
+
+6. **Consulta ao servidor autoritativo de repair.apple.com**
+   - O DNS local pergunta: "Onde está `self.repair.apple.com`?"
+   - Esse servidor é o responsável por esse nível do domínio. Ele responde:
+     - Caso exista: fornece o **endereço IP** do servidor.
+     - Caso não exista: responde **NXDOMAIN** ("Não existe esse domínio").
+
+7. **Resposta ao cliente**
+   - O DNS local recebe a resposta final e repassa ao computador do usuário.
+   - O cliente agora pode se conectar diretamente ao endereço IP correspondente.
+
+---
+
+## Representação resumida do fluxo
+
+1. Cliente → Cache/hosts  
+2. Cliente → DNS Local  
+3. DNS Local → Root Server (.com?)  
+4. DNS Local → Servidor TLD `.com` (apple.com?)  
+5. DNS Local → Servidor autoritativo `apple.com` (repair.apple.com?)  
+6. DNS Local → Servidor autoritativo `repair.apple.com` (self.repair.apple.com?)  
+7. Servidor autoritativo responde com IP ou erro  
+8. DNS Local → Cliente (resposta final)  
+
+---
+
+## Pontos importantes
+
+- O **Root Server** só sabe quem gerencia cada domínio de topo (.com, .org, .net, etc.).  
+- O **TLD Server** sabe quem gerencia o domínio principal (apple.com).  
+- O **Servidor autoritativo** tem a informação definitiva sobre os registros do domínio.  
+- O **DNS local** armazena (cacheia) as respostas para acelerar futuras consultas.  
+- Caso o domínio não exista, o servidor autoritativo retorna **NXDOMAIN**.  
+
+---
+
+📌 **Resumo:**  
+O DNS funciona como uma cadeia hierárquica de servidores, indo do mais geral (Root) ao mais específico (autoritativo do subdomínio), até encontrar o endereço IP ou confirmar que ele não existe.
