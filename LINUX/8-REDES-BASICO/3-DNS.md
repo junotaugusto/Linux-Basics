@@ -84,7 +84,7 @@ O tempo de permanência no cache é definido pelo **TTL (Time To Live)** do regi
 
 # Como funciona a resolução de nomes no DNS
 
-[imagem](/Users/user/Desktop/Captura de Tela 2025-09-10 às 21.10.24.png)
+![imagem](/Users/user/Desktop/DNS.png)
 
 A imagem ilustra o processo que ocorre quando um usuário tenta acessar o endereço **self.repair.apple.com**. Esse processo é chamado de **resolução recursiva de nomes** e envolve diversos servidores DNS até que se chegue ao endereço IP correto (ou uma resposta negativa).
 
