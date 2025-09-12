@@ -37,9 +37,7 @@ Exibe os dispositivos de rede (interfaces) e seus estados:
 ```bash
 nmcli connection show
 ```
-Mostra as conexões salvas (profiles de rede).
-
----
+Mostra as conexões ativas. Mostra detalhes como o nome da conexão, o UUID (Universally Unique Identifier), tipo e o dispositivo.
 
 ### 4. **Ativar ou desativar uma conexão**
 - Ativar:
