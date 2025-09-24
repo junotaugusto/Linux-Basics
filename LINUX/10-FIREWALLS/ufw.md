@@ -121,4 +121,4 @@ Os logs geralmente são armazenados em `/var/log/ufw.log`.
     sudo ufw reset
 ```
 
-O UFW é uma ferramenta poderosa para proteger seu sistema sem a complexidade do `iptables`. Dominar esses comandos essenciais já proporciona um excelente nível de segurança para a maioria dos casos de uso.
+O UFW é uma ferramenta que protege seu sistema sem a complexidade do `iptables`. Dominar esses comandos essenciais já proporciona um excelente nível de segurança para a maioria dos casos de uso.
