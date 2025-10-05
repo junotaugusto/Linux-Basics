@@ -72,9 +72,11 @@ Vamos decifrar cada tipo de entrada:
 
 ## 5. Comandos Essenciais: `getfacl` e `setfacl`
 
-* **`getfacl` (Ver as ACLs):**```bash
+* **`getfacl` (Ver as ACLs):**
+```bash
     # Ver as ACLs de um arquivo ou diretório
-    getfacl nome_do_arquivo```
+    getfacl nome_do_arquivo
+```
 
 * **`setfacl` (Definir as ACLs):**
     Este é o comando para modificar as permissões.
