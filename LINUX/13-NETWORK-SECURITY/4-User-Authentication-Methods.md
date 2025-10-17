@@ -6,7 +6,7 @@ A autenticação é o processo de verificar a identidade de um usuário antes de
 
 Este é o método padrão e mais familiar. O usuário possui um nome de usuário e uma senha secreta. Para acessar, ele fornece ambos, e o sistema verifica se a senha corresponde à que está armazenada (de forma criptografada) para aquele usuário. 
 
-### Melhorando a Segurança: Autenticação Multi-Fator (MFA)
+### Melhorando a Segurança: Autenticação Multi-Fator (MFA) 
 
 Embora seja o padrão, a autenticação por senha sozinha é vulnerável a ataques de adivinhação, força bruta e phishing. Para mitigar isso, a prática de segurança moderna é adicionar a **Autenticação Multi-Fator (MFA)**, também conhecida como Autenticação de Dois Fatores (2FA).
 
