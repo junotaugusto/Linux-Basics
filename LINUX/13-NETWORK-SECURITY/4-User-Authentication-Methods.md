@@ -4,7 +4,7 @@ A autenticação é o processo de verificar a identidade de um usuário antes de
 
 ## 1. Autenticação Baseada em Senha (Password-Based Authentication)
 
-Este é o método padrão e mais familiar. O usuário possui um nome de usuário e uma senha secreta. Para acessar, ele fornece ambos, e o sistema verifica se a senha corresponde à que está armazenada (de forma criptografada) para aquele usuário.
+Este é o método padrão e mais familiar. O usuário possui um nome de usuário e uma senha secreta. Para acessar, ele fornece ambos, e o sistema verifica se a senha corresponde à que está armazenada (de forma criptografada) para aquele usuário. 
 
 ### Melhorando a Segurança: Autenticação Multi-Fator (MFA)
 
