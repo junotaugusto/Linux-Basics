@@ -57,11 +57,14 @@ Port 2222
 
 ### b) Desabilitar o Login do Root (PermitRootLogin)
 
-* **Por que?** O usuário `root` é o superusuário. Se um atacante conseguir adivinhar a senha do `root`, ele ganha controle total e irrestrito do seu sistema ("Game Over"). 
+**Por que?** 
+
+O usuário `root` é o superusuário. Se um atacante conseguir adivinhar a senha do `root`, ele ganha controle total e irrestrito do seu sistema ("Game Over"). 
 
 Ao desabilitar o login do `root`, você força um ataque a ser feito em duas etapas: primeiro, o atacante precisa comprometer uma conta de usuário normal (como `joao` ou `bruno`) e, *depois*, ele precisa encontrar uma forma de "escalar privilégios" para se tornar `root`. É uma barreira de segurança crucial.
 
 **Como fazer:**
+
 **1.**  Abra o arquivo `/etc/ssh/sshd_config`.
 
 **2.**  Encontre a linha que diz `#PermitRootLogin prohibit-password` (ou algo similar, como `PermitRootLogin yes`).
