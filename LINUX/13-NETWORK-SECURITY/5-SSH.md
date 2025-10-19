@@ -78,16 +78,26 @@ PermitRootLogin no
 
 ### c) Limitar o Acesso de Usuários (AllowUsers)
 
-* **Por que?** Seguindo o "Princípio do Menor Privilégio", nem todo usuário criado no seu sistema precisa de acesso remoto. Se você tem um usuário de serviço (como `www-data`) ou um usuário que só deve acessar localmente, não há por que permitir que ele seja um vetor de ataque via SSH. Esta configuração cria uma "lista VIP": **somente** os usuários listados poderão tentar o login.
-* **Como fazer:**
-    1.  Abra o arquivo `/etc/ssh/sshd_config`.
-    2.  Vá até o final do arquivo.
-    3.  Adicione uma nova linha listando, separados por espaço, **apenas** os usuários que você quer permitir.
-        ```ini
-        # Lista apenas os usuários que podem acessar via SSH
-        AllowUsers jap bruno alice
-        ```
-    4.  Salve o arquivo.
+**Por que?** 
+
+Seguindo o "Princípio do Menor Privilégio", nem todo usuário criado no seu sistema precisa de acesso remoto. 
+
+Se você tem um usuário de serviço (como `www-data`) ou um usuário que só deve acessar localmente, não há por que permitir que ele seja um vetor de ataque via SSH. 
+
+Esta configuração cria uma "lista VIP": **somente** os usuários listados poderão tentar o login.
+
+**Como fazer:**
+
+**1.**  Abra o arquivo `/etc/ssh/sshd_config`.
+
+**2.**  Vá até o final do arquivo.
+
+**3.**  Adicione uma nova linha listando, separados por espaço, **apenas** os usuários que você quer permitir.
+```bash
+# Lista apenas os usuários que podem acessar via SSH
+AllowUsers joao bruno alice
+```
+**4.**  Salve o arquivo.
 
 ## 5. Aplicando as Alterações (Systemctl)
 
