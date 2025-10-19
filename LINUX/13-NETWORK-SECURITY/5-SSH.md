@@ -40,10 +40,15 @@ A seguir, estão as configurações mais comuns e eficazes para proteger seu ser
 Apenas mudando a porta, você se torna "invisível" para a grande maioria desses ataques automatizados. É uma forma simples e eficaz de "segurança por obscuridade".
 
 **Como fazer:**
+
 **1.**  Abra o arquivo `/etc/ssh/sshd_config`.
+
 **2.**  Encontre a linha que diz `#Port 22`.
+
 **3.**  Remova o `#` do início da linha (para "descomentar").
+
 **4.**  Altere o `22` para um número de porta alto e não utilizado (ex: `2222`, `49150`, etc.).
+
 **5.**  A linha deve ficar assim:
 ```bash
 Port 2222
